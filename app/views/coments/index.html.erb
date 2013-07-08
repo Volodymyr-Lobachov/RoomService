@@ -1,0 +1,24 @@
+<h1>Listing coments</h1>
+
+<table>
+  <tr>
+    <th>Mark</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @coments.each do |coment| %>
+  <tr>
+    <td><%= coment.mark %></td>
+    <td><%= coment.user.name %></td>
+    <td><%= link_to 'Show', [coment.hotel, coment] %></td>
+    <td><%= link_to 'Edit', edit_hotel_coment_path(coment.hotel, coment) %></td>
+    <td><%= link_to 'Destroy', [coment.hotel, coment], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Coment', new_hotel_coment_path(params[:hotel_id]) %>

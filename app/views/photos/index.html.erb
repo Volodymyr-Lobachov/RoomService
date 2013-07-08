@@ -1,0 +1,24 @@
+<h1>Listing photos</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @photos.each do |photo| %>
+  <tr>
+    <td><%= photo.title %></td>
+    <td><%= image_tag photo.image_url.to_s , size: "100x100"%></td>
+    <td><%= link_to 'Show', [photo.hotel, photo] %></td>
+    <td><%= link_to 'Edit', edit_hotel_photo_path(photo.hotel, photo) %></td>
+    <td><%= link_to 'Destroy', [photo.hotel, photo], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Photo', new_hotel_photo_path(params[:hotel_id]) %>

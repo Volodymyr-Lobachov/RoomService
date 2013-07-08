@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Mark:</b>
+  <%= @coment.mark %>
+</p>
+
+
+<%= link_to 'Edit', edit_hotel_coment_path(@coment.hotel, @coment) %> |
+<%= link_to 'Back', hotel_coments_path(@coment.hotel) %>

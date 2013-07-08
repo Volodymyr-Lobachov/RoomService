@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @hotel.title %>
+</p>
+
+<p>
+  <b>Breakfast:</b>
+  <%= @hotel.breakfast %>
+</p>
+
+<p>
+  <b>Room description:</b>
+  <%= @hotel.room_description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @hotel.price %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @hotel.address %>
+</p>
+Rating : <%= rating_for @hotel, "mark" %>
+
+<%= link_to 'Edit', edit_user_hotel_path(@hotel.user, @hotel) %> |
+<%= link_to 'Back', user_hotels_path(@hotel.user) %>
+
+<%= form_for([@hotel, Coment.new]) do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :mark %><br />
+    <%= f.text_area :mark %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>Mark</th>
+    <th>Author</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hotel.coments.each do |coment| %>
+  <tr>
+    <td><%= coment.mark %></td>
+    <td><%= coment.user.name %></td>
+    
+  </tr>
+<% end %>
+</table>

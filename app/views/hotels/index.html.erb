@@ -1,0 +1,32 @@
+<h1>Listing hotels</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Breakfast</th>
+    <th>Room description</th>
+    <th>Price</th>
+    <th>Address</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hotels.each do |hotel| %>
+  <tr>
+    <td><%= hotel.title %></td>
+    <td><%= hotel.breakfast %></td>
+    <td><%= hotel.room_description %></td>
+    <td><%= hotel.price %></td>
+    <td><%= hotel.address %></td>
+        <%if !current_user.visited.include?(hotel.id.to_s)%>
+    <td><%= link_to 'Add to viseted', user_hotel_visited_path(current_user, hotel) %></td>
+    <%end%>
+    <td><%= link_to 'Show', hotel %></td>
+  
+    
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Hotel', new_user_hotel_path(current_user) %>
