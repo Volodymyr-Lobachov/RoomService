@@ -1,6 +1,8 @@
 RoomService::Application.routes.draw do
-  resources :hotels, only: [:index, :show] do
-    resources :coments
+
+  get 'main', controller: :hotels, action: :main
+    resources :hotels, only: [:main, :index, :show] do
+    resources :coments, only: [:new, :create]
     resources :photos
   end
 
@@ -8,16 +10,15 @@ RoomService::Application.routes.draw do
 
   match '/rate' => 'rater#create', :as => 'rate'
 
-  resources :users, except: :destroy do
+  resources :users, except: [:destroy, :index] do
     resources :hotels do 
       post '/visited' => 'hotels#add_to_visited', :as => :visited
       get '/visited' => 'hotels#add_to_visited', :as => :visited
     end
   end
 
-  
 
-
+  root :to => 'hotels#main'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -67,7 +68,7 @@ RoomService::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+
 
   # See how all your routes lay out with "rake routes"
 

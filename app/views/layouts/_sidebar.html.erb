@@ -1,0 +1,12 @@
+            <div class="well sidebar-nav" id="sidebar" >
+              <h3>Navigation</h3>
+              <ul class="nav nav-list">
+                <li><%= link_to "Main", main_path %></li>
+
+                <li><%= link_to "My page", user_path(current_user)  %></li>
+                <li><%= link_to "Visited_hotels", user_hotels_path(current_user)%></li>
+                <li><%= link_to "Hotels", hotels_path  %></li>
+                <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+
+              </ul>
+            </div><!--/.well -->

@@ -29,6 +29,7 @@ gem "rmagick"
 gem "carrierwave"
 gem 'nested_scaffold'
 gem 'letsrate'
+gem 'will_paginate'
 gem 'rspec-rails'
 
 

@@ -1,10 +1,12 @@
-<p id="notice"><%= notice %></p>
+<h3 align="center"><%= "#{@hotel.title} Photos"%></h3>
+
 
 <p>
   <b>Title:</b>
   <%= @photo.title %>
 </p>
 <div>
-<%= image_tag @photo.image_url.to_s , size: "500x500"%><div>
-<%= link_to 'Edit', edit_hotel_photo_path(@photo.hotel, @photo) %> |
-<%= link_to 'Back', hotel_photos_path(@photo.hotel) %>
+<%= image_tag @photo.image_url.to_s , size: "500x500"%></div>
+<br />
+<%= link_to 'Edit', edit_hotel_photo_path(@photo.hotel, @photo), class: "btn btn-success" %> 
+<%= link_to 'Back', hotel_photos_path(@photo.hotel), class: "btn btn-primary" %>

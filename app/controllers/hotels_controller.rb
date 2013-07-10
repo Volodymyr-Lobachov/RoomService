@@ -1,17 +1,20 @@
 class HotelsController < ApplicationController
   # GET users/1/hotels
   # GET users/1/hotels.json
+  #require 'will_paginate/array'
+
   def index
   if params[:user_id]
     @user = User.find(params[:user_id])
     visited = @user.visited
-    @hotels = Hotel.find(visited)
+    @hotels = Hotel.find(visited).paginate(:page =>params[:page], :per_page => 5)
+    page = "visited_hotels"
   else
-    @hotels = Hotel.all
+    @hotels = Hotel.all.paginate(:page =>params[:page], :per_page => 5)
   end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render page}
       format.json { render :json => @hotels }
     end
   end
@@ -20,6 +23,7 @@ class HotelsController < ApplicationController
   # GET users/1/hotels/1.json
   def show
     @hotel = Hotel.find(params[:id])
+    @coments = @hotel.coments.order('created_at DESC').paginate(:page =>params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -87,4 +91,9 @@ class HotelsController < ApplicationController
     @user.save
     redirect_to user_hotels_path(@user)
   end
+
+  def main
+    @top_hotels = Hotel.get_top_five_hotels
+  end
+
 end

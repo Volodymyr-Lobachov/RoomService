@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', [@photo.hotel, @photo] %> |
-<%= link_to 'Back', hotel_photos_path(@photo.hotel) %>
+<%= link_to 'Show', [@photo.hotel, @photo], class: "btn btn-primary" %> 
+<%= link_to 'Back', hotel_photos_path(@photo.hotel), class: "btn btn-success" %>
