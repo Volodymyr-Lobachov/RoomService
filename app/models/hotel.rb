@@ -1,4 +1,9 @@
 class Hotel < ActiveRecord::Base
+  validates :price, :format => { :with => /^\d+??(?:\.\d{0,2})?$/ }, :numericality => {:greater_than => 0}
+  validates_presence_of  :price, :room_description, :title,
+                        :country, :state, :city, :street
+
+
   has_many :photos
   has_many :coments
   belongs_to :user

@@ -12,7 +12,6 @@ RoomService::Application.routes.draw do
 
   resources :users, except: [:destroy, :index] do
     resources :hotels do 
-      post '/visited' => 'hotels#add_to_visited', :as => :visited
       get '/visited' => 'hotels#add_to_visited', :as => :visited
     end
   end

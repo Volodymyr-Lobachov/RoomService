@@ -1,5 +1,14 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+  @user = User.create
+  @user.visited_hotels = "1 2 3"
+  end
+
+	describe "#visited" do
+		it "should be visited" do
+			@user.visited.should == ["1","2",'3']
+		end
+	end
 end
